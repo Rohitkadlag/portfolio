@@ -1,4 +1,7 @@
+import { useTheme } from '../../context/ThemeContext'
+
 function SkillsSection() {
+  const { theme } = useTheme()
   const skills = [
     'React', 'TypeScript', 'Python', 'Django', 'Express', 'PostgreSQL',
     'AWS', 'Gen AI', 'C++', 'JavaScript', 'Firebase', 'Streamlit', 'Git', 'Node.js',
@@ -15,7 +18,7 @@ function SkillsSection() {
           {[...skills, ...skills].map((skill, index) => (
             <div
               key={index}
-              className="px-6 sm:px-8 md:px-10 py-3 sm:py-4 glass rounded-full whitespace-nowrap text-sm sm:text-base md:text-lg font-medium flex-shrink-0"
+              className={`px-6 sm:px-8 md:px-10 py-3 sm:py-4 ${theme === 'dark' ? 'glass' : 'glass-light'} rounded-full whitespace-nowrap text-sm sm:text-base md:text-lg font-medium flex-shrink-0`}
             >
               {skill}
             </div>

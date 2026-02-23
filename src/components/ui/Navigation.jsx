@@ -1,3 +1,5 @@
+import ThemeToggle from './ThemeToggle'
+
 function Navigation({ scrolled }) {
   return (
     <nav
@@ -7,19 +9,22 @@ function Navigation({ scrolled }) {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
         <div className="text-lg md:text-xl font-semibold tracking-tight">RK</div>
-        <div className="flex gap-4 sm:gap-6 md:gap-8 text-xs sm:text-sm">
-          <a href="#about" className="hover:text-gray-400 transition-colors apple-ease">
-            About
-          </a>
-          <a href="#experience" className="hover:text-gray-400 transition-colors apple-ease">
-            Experience
-          </a>
-          <a href="#projects" className="hover:text-gray-400 transition-colors apple-ease">
-            Projects
-          </a>
-          <a href="#contact" className="hover:text-gray-400 transition-colors apple-ease">
-            Contact
-          </a>
+        <div className="flex items-center gap-4 sm:gap-6 md:gap-8">
+          <div className="flex gap-4 sm:gap-6 md:gap-8 text-xs sm:text-sm">
+            <a href="#about" className="hover:text-gray-400 transition-colors apple-ease">
+              About
+            </a>
+            <a href="#experience" className="hover:text-gray-400 transition-colors apple-ease">
+              Experience
+            </a>
+            <a href="#projects" className="hover:text-gray-400 transition-colors apple-ease">
+              Projects
+            </a>
+            <a href="#contact" className="hover:text-gray-400 transition-colors apple-ease">
+              Contact
+            </a>
+          </div>
+          <ThemeToggle />
         </div>
       </div>
     </nav>

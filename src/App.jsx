@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useTheme } from './context/ThemeContext'
 import Navigation from './components/ui/Navigation'
 import HeroSection from './components/sections/HeroSection'
 import AboutSection from './components/sections/AboutSection'
@@ -8,6 +9,7 @@ import ProjectsSection from './components/sections/ProjectsSection'
 import ContactSection from './components/sections/ContactSection'
 
 function App() {
+  const { theme } = useTheme()
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [scrolled, setScrolled] = useState(false)
 
@@ -30,7 +32,7 @@ function App() {
   }, [])
 
   return (
-    <div className="bg-black text-white">
+    <div className={`transition-colors duration-500 ${theme === 'dark' ? 'bg-black text-white' : 'bg-white text-gray-900'}`}>
       <Navigation scrolled={scrolled} />
       <HeroSection mousePosition={mousePosition} />
       <AboutSection />
