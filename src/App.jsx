@@ -35,11 +35,11 @@ function App() {
     <div className={`transition-colors duration-500 ${theme === 'dark' ? 'bg-black text-white' : 'bg-white text-gray-900'}`}>
       <Navigation scrolled={scrolled} />
       <HeroSection mousePosition={mousePosition} />
-      <AboutSection />
-      <SkillsSection />
-      <ExperienceSection />
-      <ProjectsSection />
-      <ContactSection />
+      <AboutSection mousePosition={mousePosition} />
+      <SkillsSection mousePosition={mousePosition} />
+      <ExperienceSection mousePosition={mousePosition} />
+      <ProjectsSection mousePosition={mousePosition} />
+      <ContactSection mousePosition={mousePosition} />
     </div>
   )
 }

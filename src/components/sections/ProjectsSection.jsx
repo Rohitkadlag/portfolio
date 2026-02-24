@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef } from 'react'
 import { useTheme } from '../../context/ThemeContext'
 import Modal from '../ui/Modal'
+import BackgroundEffects from '../BackgroundEffects'
 
-function ProjectsSection() {
+function ProjectsSection({ mousePosition }) {
   const { theme } = useTheme()
   const [visibleProjects, setVisibleProjects] = useState([])
   const [selectedProject, setSelectedProject] = useState(null)
@@ -25,7 +26,10 @@ function ProjectsSection() {
         'State management with Zustand for seamless performance',
         'Custom canvas rendering with Konva.js for smooth interactions'
       ],
-      impact: 'Streamlined the architectural design process, reducing design time by 60% for small to medium projects.'
+      impact: 'Streamlined the architectural design process, reducing design time by 60% for small to medium projects.',
+      liveUrl: 'https://floorplanarchitechture.netlify.app/',
+      githubUrl: 'https://github.com/Rohitkadlag/floorplan-architechture',
+      image: '/images/project/2825814_20574.jpg'
     },
     {
       title: 'Reddit Clone',
@@ -44,7 +48,9 @@ function ProjectsSection() {
         'Image upload and media handling with cloud storage',
         'Responsive design for mobile and desktop'
       ],
-      impact: 'Successfully handles concurrent users with real-time updates, demonstrating scalable architecture patterns.'
+      impact: 'Successfully handles concurrent users with real-time updates, demonstrating scalable architecture patterns.',
+      githubUrl: 'https://github.com/Rohitkadlag/redditclone2',
+      image: '/images/project/36190313_8379997.jpg'
     },
     {
       title: 'AI Course Discovery',
@@ -63,7 +69,8 @@ function ProjectsSection() {
         'Advanced filtering and personalized recommendations',
         'AWS S3 integration for asset management'
       ],
-      impact: 'Improved course discovery accuracy by 85% compared to traditional keyword search, with 3x faster data processing.'
+      impact: 'Improved course discovery accuracy by 85% compared to traditional keyword search, with 3x faster data processing.',
+      image: '/images/project/7743098_1723.jpg'
     },
     {
       title: 'BillMind',
@@ -82,7 +89,11 @@ function ProjectsSection() {
         'Interactive analytics dashboard with spending insights and category breakdowns',
         'AI chatbot for natural language queries about bills and spending'
       ],
-      impact: 'Eliminates manual data entry entirely with 3 production-ready n8n workflows, saving hours of weekly bill management while proactively detecting anomalies.'
+      impact: 'Eliminates manual data entry entirely with 3 production-ready n8n workflows, saving hours of weekly bill management while proactively detecting anomalies.',
+      liveUrl: 'https://billmind-frontend.vercel.app/',
+      githubUrl: 'https://github.com/Rohitkadlag/billmind-frontend',
+      githubUrl2: 'https://github.com/Rohitkadlag/billmind-backend',
+      image: '/images/project/138219470_10172884.jpg'
     },
   ]
 
@@ -106,7 +117,8 @@ function ProjectsSection() {
   }, [])
 
   return (
-    <section id="projects" ref={sectionRef} className="py-20 md:py-32 overflow-hidden">
+    <section id="projects" ref={sectionRef} className="relative py-20 md:py-32 overflow-hidden">
+      <BackgroundEffects mousePosition={mousePosition} />
       <div className="mb-12 md:mb-16 text-center px-4 sm:px-6 lg:px-8">
         <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight">Featured work.</h2>
       </div>
@@ -116,13 +128,13 @@ function ProjectsSection() {
           {/* Fade overlays */}
           <div className="absolute left-0 top-0 bottom-0 w-32 z-10 pointer-events-none" style={{
             background: theme === 'dark' 
-              ? 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)'
-              : 'linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%)'
+              // ? 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)'
+              // : 'linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%)'
           }} />
           <div className="absolute right-0 top-0 bottom-0 w-32 z-10 pointer-events-none" style={{
-            background: theme === 'dark'
-              ? 'linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)'
-              : 'linear-gradient(to left, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%)'
+            // background: theme === 'dark'
+            //   ? 'linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)'
+            //   : 'linear-gradient(to left, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%)'
           }} />
           
           <div 
@@ -143,36 +155,110 @@ function ProjectsSection() {
                   }`}
                   style={{ transitionDelay: `${index * 100}ms` }}
                 >
-                  <button
-                    onClick={() => setSelectedProject(project)}
-                    className={`relative w-[320px] sm:w-[380px] h-[400px] sm:h-[450px] ${theme === 'dark' ? 'bg-black' : 'bg-white'} rounded-2xl sm:rounded-3xl p-6 sm:p-8 hover:scale-[1.02] transition-all duration-500 apple-ease group cursor-pointer overflow-hidden flex flex-col justify-between`} 
+                  <div
+                    className={`relative w-[320px] sm:w-[380px] h-[550px] sm:h-[600px] ${theme === 'dark' ? 'bg-black' : 'bg-white'} rounded-2xl sm:rounded-3xl overflow-hidden hover:scale-[1.02] transition-all duration-500 apple-ease group flex flex-col`} 
                     style={{ 
                       boxShadow: theme === 'light' ? '0 4px 20px rgba(0, 0, 0, 0.08)' : '0 4px 20px rgba(0, 0, 0, 0.5)',
                       border: theme === 'dark' ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid rgba(0, 0, 0, 0.06)'
                     }}
                   >
-                    <div className="text-left">
-                      <p className={`text-xs font-semibold mb-3 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
-                        {project.metrics[0]}
-                      </p>
-                      <h3 className="text-2xl sm:text-3xl font-bold mb-2 leading-tight">
-                        {project.title}
-                      </h3>
-                      <p className={`text-base sm:text-lg ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} leading-snug`}>
-                        {project.subtitle}
-                      </p>
-                    </div>
+                    <div className="flex-1 flex flex-col justify-between p-6 sm:p-8">
+                      <div className="text-left">
+                        <p className={`text-xs font-semibold mb-3 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
+                          {project.metrics[0]}
+                        </p>
+                        <h3 className="text-2xl sm:text-3xl font-bold mb-2 leading-tight">
+                          {project.title}
+                        </h3>
+                        <p className={`text-base sm:text-lg ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} leading-snug mb-4`}>
+                          {project.subtitle}
+                        </p>
 
-                    <div className="absolute bottom-6 right-6">
-                      <div className={`w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110 ${
-                        theme === 'dark' ? 'bg-white/10' : 'bg-black/5'
-                      }`}>
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                        </svg>
+                        {/* Project Image */}
+                        {project.image && (
+                          <div className="relative w-full h-48 overflow-hidden rounded-xl mb-4 bg-gray-100 dark:bg-gray-800">
+                            <img 
+                              src={project.image} 
+                              alt={project.title}
+                              className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
+                            />
+                          </div>
+                        )}
                       </div>
+
+                    <div className="flex flex-col gap-3">
+                      {project.liveUrl && (
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className={`flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg font-semibold text-sm transition-all duration-300 ${
+                            theme === 'dark'
+                              ? 'bg-white text-black hover:bg-gray-200'
+                              : 'bg-black text-white hover:bg-gray-800'
+                          }`}
+                        >
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                          </svg>
+                          Live Demo
+                        </a>
+                      )}
+                      <div className="flex gap-2">
+                        {project.githubUrl && (
+                          <a
+                            href={project.githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                            className={`flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg font-semibold text-sm transition-all duration-300 ${
+                              theme === 'dark'
+                                ? 'bg-zinc-800 text-white hover:bg-zinc-700 border border-zinc-700'
+                                : 'bg-white text-black hover:bg-gray-100 border border-gray-300'
+                            }`}
+                          >
+                            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                              <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
+                            </svg>
+                            {project.githubUrl2 ? 'Frontend' : 'GitHub'}
+                          </a>
+                        )}
+                        {project.githubUrl2 && (
+                          <a
+                            href={project.githubUrl2}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                            className={`flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg font-semibold text-sm transition-all duration-300 ${
+                              theme === 'dark'
+                                ? 'bg-zinc-800 text-white hover:bg-zinc-700 border border-zinc-700'
+                                : 'bg-white text-black hover:bg-gray-100 border border-gray-300'
+                            }`}
+                          >
+                            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                              <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
+                            </svg>
+                            Backend
+                          </a>
+                        )}
+                      </div>
+                      <button
+                        onClick={() => setSelectedProject(project)}
+                        className={`flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg font-semibold text-sm transition-all duration-300 ${
+                          theme === 'dark'
+                            ? 'bg-zinc-800/50 text-white hover:bg-zinc-800 border border-zinc-700'
+                            : 'bg-gray-100 text-black hover:bg-gray-200 border border-gray-200'
+                        }`}
+                      >
+                        View Details
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </button>
                     </div>
-                  </button>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
@@ -227,6 +313,62 @@ function ProjectsSection() {
                 {selectedProject.impact}
               </p>
             </div>
+
+            {(selectedProject.liveUrl || selectedProject.githubUrl || selectedProject.githubUrl2) && (
+              <div className="mt-8 flex flex-wrap gap-4">
+                {selectedProject.liveUrl && (
+                  <a
+                    href={selectedProject.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
+                      theme === 'dark'
+                        ? 'bg-white text-black hover:bg-gray-200'
+                        : 'bg-black text-white hover:bg-gray-800'
+                    }`}
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                    Live Demo
+                  </a>
+                )}
+                {selectedProject.githubUrl && (
+                  <a
+                    href={selectedProject.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
+                      theme === 'dark'
+                        ? 'bg-zinc-800 text-white hover:bg-zinc-700 border border-zinc-700'
+                        : 'bg-white text-black hover:bg-gray-100 border border-gray-300'
+                    }`}
+                  >
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
+                    </svg>
+                    {selectedProject.githubUrl2 ? 'Frontend' : 'GitHub'}
+                  </a>
+                )}
+                {selectedProject.githubUrl2 && (
+                  <a
+                    href={selectedProject.githubUrl2}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
+                      theme === 'dark'
+                        ? 'bg-zinc-800 text-white hover:bg-zinc-700 border border-zinc-700'
+                        : 'bg-white text-black hover:bg-gray-100 border border-gray-300'
+                    }`}
+                  >
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
+                    </svg>
+                    Backend
+                  </a>
+                )}
+              </div>
+            )}
           </div>
         )}
       </Modal>
