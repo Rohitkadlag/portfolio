@@ -60,30 +60,30 @@ function AboutSection({ mousePosition }) {
         >
          
 
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-8 md:mb-12 tracking-tight">
+          <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 sm:mb-8 md:mb-12 tracking-tight">
             Think. Build. Ship.
           </h2>
           
-          <p className={`text-lg sm:text-xl md:text-2xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} mb-8 md:mb-12 max-w-4xl leading-relaxed`}>
+          <p className={`text-base xs:text-lg sm:text-xl md:text-2xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} mb-6 sm:mb-8 md:mb-12 max-w-4xl leading-relaxed`}>
             Passionate software engineer specializing in full-stack development and AI-driven solutions. 
             I transform complex problems into elegant, scalable systems that users love.
           </p>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8 mb-16">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 xs:gap-4 sm:gap-6 md:gap-8 mb-12 sm:mb-16">
             <StatCard number="1+" label="Years Experience" delay={0} isVisible={isVisible} />
             <StatCard number="1000+" label="Data Points Processed" delay={100} isVisible={isVisible} />
             <StatCard number="100+" label="API Endpoints Built" delay={200} isVisible={isVisible} />
             <StatCard number="MSc IT" label="Education" delay={300} isVisible={isVisible} />
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12 md:gap-16">
+          <div className="grid md:grid-cols-2 gap-8 sm:gap-12 md:gap-16">
             <div
               className={`transition-all duration-1000 delay-400 apple-ease ${
                 isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-20'
               }`}
             >
-              <h3 className="text-2xl sm:text-3xl font-bold mb-6">Core Skills</h3>
-              <div className="flex flex-wrap gap-3">
+              <h3 className="text-xl xs:text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">Core Skills</h3>
+              <div className="flex flex-wrap gap-2 sm:gap-3">
                 {skills.map((skill, index) => {
                   const Icon = skill.icon
                   return (
@@ -91,7 +91,9 @@ function AboutSection({ mousePosition }) {
                       key={skill.name}
                       onMouseEnter={() => setActiveSkill(skill.name)}
                       onMouseLeave={() => setActiveSkill(null)}
-                      className={`group relative px-4 py-2.5 rounded-xl font-medium transition-all duration-300 ${
+                      onTouchStart={() => setActiveSkill(skill.name)}
+                      onTouchEnd={() => setTimeout(() => setActiveSkill(null), 2000)}
+                      className={`group relative px-3 xs:px-4 py-2 xs:py-2.5 rounded-lg xs:rounded-xl text-sm xs:text-base font-medium transition-all duration-300 ${
                         theme === 'dark'
                           ? 'bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20'
                           : 'bg-black/5 hover:bg-black/10 border border-black/10 hover:border-black/20'
@@ -100,11 +102,11 @@ function AboutSection({ mousePosition }) {
                         transitionDelay: `${index * 50}ms`
                       }}
                     >
-                      <div className="flex items-center gap-2">
-                        <Icon className="w-4 h-4" />
+                      <div className="flex items-center gap-1.5 xs:gap-2">
+                        <Icon className="w-3.5 h-3.5 xs:w-4 xs:h-4" />
                         <span>{skill.name}</span>
                       </div>
-                      <div className={`absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 rounded text-xs whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity ${
+                      <div className={`absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 rounded text-xs whitespace-nowrap opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity ${
                         theme === 'dark' ? 'bg-white/10 backdrop-blur-sm' : 'bg-black/10 backdrop-blur-sm'
                       }`}>
                         {skill.category}
@@ -120,8 +122,8 @@ function AboutSection({ mousePosition }) {
                 isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-20'
               }`}
             >
-              <h3 className="text-2xl sm:text-3xl font-bold mb-6">Journey</h3>
-              <div className="space-y-6">
+              <h3 className="text-xl xs:text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">Journey</h3>
+              <div className="space-y-4 sm:space-y-6">
                 {journey.map((item, index) => (
                   <div
                     key={item.year}
@@ -142,8 +144,8 @@ function AboutSection({ mousePosition }) {
                     }`}>
                       {item.year}
                     </div>
-                    <div className="font-bold text-lg mb-1">{item.title}</div>
-                    <div className={`text-sm ${
+                    <div className="font-bold text-base xs:text-lg mb-1">{item.title}</div>
+                    <div className={`text-xs xs:text-sm ${
                       theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
                     }`}>
                       {item.description}

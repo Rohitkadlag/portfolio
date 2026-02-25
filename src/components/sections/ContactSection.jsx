@@ -60,13 +60,13 @@ function ContactSection({ mousePosition }) {
     <section id="contact" className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 md:py-32 overflow-hidden">
       <BackgroundEffects mousePosition={mousePosition} />
       <div className="max-w-6xl w-full">
-        <div className="text-center mb-16 md:mb-20">
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight">
+        <div className="text-center mb-12 sm:mb-16 md:mb-20">
+          <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight">
             Get in touch.
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16 md:mb-20">
           {contactMethods.map((method, index) => (
             <a
               key={index}
@@ -75,12 +75,12 @@ function ContactSection({ mousePosition }) {
               rel={method.href.startsWith('http') ? 'noopener noreferrer' : undefined}
               className="group flex flex-col items-center text-center"
             >
-              <div className={`w-16 h-16 mb-4 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 ${
+              <div className={`w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 mb-3 xs:mb-4 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 ${
                 theme === 'dark' ? 'text-white' : 'text-black'
               }`}>
                 {method.icon}
               </div>
-              <p className={`text-base font-medium transition-colors duration-300 ${
+              <p className={`text-sm xs:text-base font-medium transition-colors duration-300 ${
                 theme === 'dark' 
                   ? 'text-blue-400 group-hover:text-blue-300' 
                   : 'text-blue-600 group-hover:text-blue-700'
@@ -94,25 +94,25 @@ function ContactSection({ mousePosition }) {
           ))}
         </div>
 
-        <div className="text-center mb-16">
-          <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-12 tracking-tight">
+        <div className="text-center mb-12 sm:mb-16">
+          <h3 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12 tracking-tight">
             More ways to reach me.
           </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 max-w-2xl mx-auto">
             {contactInfo.map((info, index) => (
               <div
                 key={index}
                 className="flex flex-col items-center text-center"
               >
-                <div className={`w-16 h-16 mb-4 flex items-center justify-center ${
+                <div className={`w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 mb-3 xs:mb-4 flex items-center justify-center ${
                   theme === 'dark' ? 'text-white' : 'text-black'
                 }`}>
                   {info.icon}
                 </div>
-                <p className={`text-sm font-semibold mb-1 ${theme === 'dark' ? 'text-gray-500' : 'text-gray-600'}`}>
+                <p className={`text-xs xs:text-sm font-semibold mb-1 ${theme === 'dark' ? 'text-gray-500' : 'text-gray-600'}`}>
                   {info.label}
                 </p>
-                <p className={`text-base font-medium ${theme === 'dark' ? 'text-white' : 'text-black'}`}>
+                <p className={`text-sm xs:text-base font-medium ${theme === 'dark' ? 'text-white' : 'text-black'}`}>
                   {info.value}
                 </p>
               </div>

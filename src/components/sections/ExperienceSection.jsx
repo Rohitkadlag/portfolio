@@ -83,19 +83,19 @@ function ExperienceSection({ mousePosition }) {
   return (
     <section id="experience" ref={sectionRef} className="relative py-20 md:py-32 overflow-hidden">
       <BackgroundEffects mousePosition={mousePosition} />
-      <div className="relative z-10 mb-12 md:mb-16 text-center px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight">Experience.</h2>
+      <div className="relative z-10 mb-8 sm:mb-12 md:mb-16 text-center px-4 sm:px-6 lg:px-8">
+        <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight">Experience.</h2>
       </div>
 
       <div className="relative z-50 px-4 sm:px-6 lg:px-8">
         <div className="relative" style={{ overflow: 'hidden' }}>
           {/* Fade overlays */}
-          <div className="absolute left-0 top-0 bottom-0 w-32 z-10 pointer-events-none" style={{
-            // background: theme === 'dark' 
-            //   ? 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)'
-            //   : 'linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%)'
+          <div className="absolute left-0 top-0 bottom-0 w-8 sm:w-16 md:w-32 z-10 pointer-events-none" style={{
+            background: theme === 'dark' 
+              ? 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)'
+              : 'linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%)'
           }} />
-          <div className="absolute right-0 top-0 bottom-0 w-32 z-10 pointer-events-none" style={{
+          <div className="absolute right-0 top-0 bottom-0 w-8 sm:w-16 md:w-32 z-10 pointer-events-none" style={{
             background: theme === 'dark'
               ? 'linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)'
               : 'linear-gradient(to left, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%)'
@@ -109,7 +109,7 @@ function ExperienceSection({ mousePosition }) {
               WebkitOverflowScrolling: 'touch'
             }}
           >
-            <div className="flex gap-4 sm:gap-6 justify-center px-32">
+            <div className="flex gap-4 sm:gap-6 justify-start md:justify-center px-4 sm:px-8 md:px-16 lg:px-32">
               {experiences.map((exp, index) => (
                 <div
                   key={index}
@@ -120,7 +120,7 @@ function ExperienceSection({ mousePosition }) {
                 >
                   <button
                     onClick={() => setSelectedExperience(exp)}
-                    className={`relative w-[320px] sm:w-[380px] h-[400px] sm:h-[450px] ${theme === 'dark' ? 'bg-black' : 'bg-white'} rounded-2xl sm:rounded-3xl p-6 sm:p-8 hover:scale-[1.02] transition-all duration-500 apple-ease cursor-pointer group overflow-hidden flex flex-col justify-between`} 
+                    className={`relative w-[280px] xs:w-[320px] sm:w-[380px] h-[380px] xs:h-[400px] sm:h-[450px] ${theme === 'dark' ? 'bg-black' : 'bg-white'} rounded-2xl sm:rounded-3xl p-5 xs:p-6 sm:p-8 hover:scale-[1.02] transition-all duration-500 apple-ease cursor-pointer group overflow-hidden flex flex-col justify-between`} 
                     style={{ 
                       boxShadow: theme === 'light' ? '0 4px 20px rgba(0, 0, 0, 0.08)' : '0 4px 20px rgba(0, 0, 0, 0.5)',
                       border: theme === 'dark' ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid rgba(0, 0, 0, 0.06)'
@@ -128,24 +128,24 @@ function ExperienceSection({ mousePosition }) {
                   >
                     <div className="text-left">
                       {exp.logo && (
-                        <div className="mb-4">
+                        <div className="mb-3 xs:mb-4">
                           <img 
                             src={exp.logo} 
                             alt={`${exp.company} logo`}
-                            className="h-12 w-12 object-contain rounded-lg"
+                            className="h-10 xs:h-12 w-10 xs:w-12 object-contain rounded-lg"
                           />
                         </div>
                       )}
-                      <p className={`text-xs font-semibold mb-3 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
+                      <p className={`text-xs font-semibold mb-2 xs:mb-3 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
                         Professional Experience
                       </p>
-                      <h3 className="text-2xl sm:text-3xl font-bold mb-2 leading-tight">
+                      <h3 className="text-xl xs:text-2xl sm:text-3xl font-bold mb-2 leading-tight">
                         {exp.company}
                       </h3>
-                      <p className={`text-base sm:text-lg ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} leading-snug mb-2`}>
+                      <p className={`text-sm xs:text-base sm:text-lg ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} leading-snug mb-2`}>
                         {exp.role}
                       </p>
-                      <p className={`text-sm ${theme === 'dark' ? 'text-gray-500' : 'text-gray-500'}`}>
+                      <p className={`text-xs xs:text-sm ${theme === 'dark' ? 'text-gray-500' : 'text-gray-500'}`}>
                         {exp.period}
                       </p>
                     </div>
@@ -157,7 +157,7 @@ function ExperienceSection({ mousePosition }) {
                           target="_blank"
                           rel="noopener noreferrer"
                           onClick={(e) => e.stopPropagation()}
-                          className={`flex items-center gap-2 px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-300 ${
+                          className={`flex items-center gap-1.5 xs:gap-2 px-3 xs:px-4 py-2 rounded-lg font-semibold text-xs xs:text-sm transition-all duration-300 ${
                             theme === 'dark'
                               ? 'bg-[#0077B5] text-white hover:bg-[#006399]'
                               : 'bg-[#0077B5] text-white hover:bg-[#006399]'

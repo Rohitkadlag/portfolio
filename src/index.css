@@ -21,6 +21,8 @@ body {
   overflow-x: hidden;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: pan-y;
 }
 
 body::-webkit-scrollbar {
@@ -64,6 +66,19 @@ html::-webkit-scrollbar {
   
   .apple-ease {
     transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .touch-pan-x {
+    touch-action: pan-x;
+  }
+
+  .touch-pan-y {
+    touch-action: pan-y;
+  }
+
+  .smooth-scroll {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
   }
 }
 

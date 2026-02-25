@@ -7,6 +7,9 @@ export default {
   ],
   theme: {
   	extend: {
+  		screens: {
+  			'xs': '475px',
+  		},
   		animation: {
   			float: 'float 6s ease-in-out infinite',
   			marquee: 'marquee 40s linear infinite',
